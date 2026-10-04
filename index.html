@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PPOS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="desktop">
+
+    <header class="menubar">
+      <strong></strong>
+      <strong>Finder</strong>
+      <span>File</span>
+      <span>Edit</span>
+      <span>View</span>
+      <span>Window</span>
+      <span>Help</span>
+      <span id="clock"></span>
+    </header>
+
+    <div class="desktop-icons">
+      <button class="desktop-icon" onclick="openWindow('memoWindow')">
+        <span>📝</span>
+        Memo
+      </button>
+
+      <button class="desktop-icon" onclick="openWindow('browserWindow')">
+        <span>🌐</span>
+        Opera GX
+      </button>
+    </div>
+
+    <!-- MEMO -->
+
+    <section class="window hidden" id="memoWindow">
+
+      <div class="titlebar">
+        <div class="traffic">
+          <button class="close" onclick="closeWindow('memoWindow')"></button>
+          <button class="minimize" onclick="minimizeWindow('memoWindow')"></button>
+          <button class="maximize" onclick="maximizeWindow('memoWindow')"></button>
+        </div>
+
+        <strong>Memo</strong>
+      </div>
+
+      <div class="memo-toolbar">
+        <button onclick="newMemo()">＋ New</button>
+        <button onclick="deleteMemo()">🗑 Delete</button>
+
+        <input
+          id="memoSearch"
+          placeholder="Search memos..."
+          oninput="renderMemoList()"
+        >
+      </div>
+
+      <div class="memo-layout">
+
+        <aside class="memo-sidebar">
+          <div class="sidebar-title">
+            MEMOS
+            <span id="memoCount"></span>
+          </div>
+
+          <div id="memoList"></div>
+        </aside>
+
+        <main class="memo-editor">
+
+          <input
+            id="memoTitle"
+            class="memo-title-input"
+            placeholder="Untitled"
+            oninput="updateMemo()"
+          >
+
+          <textarea
+            id="memoBody"
+            placeholder="Type anything..."
+            oninput="updateMemo()"
+          ></textarea>
+
+          <div class="memo-status" id="memoStatus">
+            Saved locally
+          </div>
+
+        </main>
+
+      </div>
+
+    </section>
+
+    <!-- OPERA GX -->
+
+    <section class="window browser-window hidden" id="browserWindow">
+
+      <div class="titlebar dark-titlebar">
+
+        <div class="traffic">
+          <button class="close" onclick="closeWindow('browserWindow')"></button>
+          <button class="minimize" onclick="minimizeWindow('browserWindow')"></button>
+          <button class="maximize" onclick="maximizeWindow('browserWindow')"></button>
+        </div>
+
+        <strong>Opera GX</strong>
+
+      </div>
+
+      <div class="browser-tabs">
+
+        <div class="browser-tab active">
+          🌐 Proxy
+        </div>
+
+        <button onclick="newTab()">＋</button>
+
+      </div>
+
+      <div class="browser-toolbar">
+
+        <button onclick="goBack()">←</button>
+        <button onclick="goForward()">→</button>
+        <button onclick="reloadPage()">↻</button>
+
+        <input
+          id="addressBar"
+          value="https://iwannapoop.up.railway.app"
+          onkeydown="addressKey(event)"
+        >
+
+        <button onclick="navigate()">Go</button>
+
+      </div>
+
+      <iframe
+        id="browserFrame"
+        src="https://iwannapoop.up.railway.app"
+        allowfullscreen>
+      </iframe>
+
+      <div class="browser-status">
+        Opera GX
+      </div>
+
+    </section>
+
+    <!-- DOCK -->
+
+    <div class="dock">
+
+      <button onclick="openWindow('memoWindow')">
+        📝
+      </button>
+
+      <button onclick="openWindow('browserWindow')">
+        🌐
+      </button>
+
+      <div class="dock-separator"></div>
+
+      <button onclick="alert('Finder is not implemented yet.')">
+        📁
+      </button>
+
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
