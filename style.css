@@ -1,0 +1,546 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "SF Pro Display",
+    "Segoe UI",
+    sans-serif;
+}
+
+body {
+  background: #172033;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+#desktop {
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      #6d86ad,
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #35496c,
+      #151c2d
+    );
+}
+
+/* MENU BAR */
+
+.menubar {
+  height: 28px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 17px;
+
+  padding: 0 12px;
+
+  background: rgba(255,255,255,.8);
+
+  backdrop-filter: blur(20px);
+
+  color: #111;
+
+  font-size: 13px;
+
+  position: relative;
+
+  z-index: 1000;
+}
+
+#clock {
+  margin-left: auto;
+}
+
+/* DESKTOP */
+
+.desktop-icons {
+  position: absolute;
+
+  right: 25px;
+  top: 55px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 15px;
+}
+
+.desktop-icon {
+  width: 75px;
+
+  border: 0;
+
+  background: transparent;
+
+  color: white;
+
+  text-shadow:
+    0 1px 4px black;
+
+  padding: 7px;
+
+  border-radius: 8px;
+}
+
+.desktop-icon:hover {
+  background: rgba(255,255,255,.18);
+}
+
+.desktop-icon span {
+  display: block;
+
+  font-size: 38px;
+
+  margin-bottom: 4px;
+}
+
+/* WINDOWS */
+
+.window {
+  position: absolute;
+
+  left: 7%;
+  top: 9%;
+
+  width: 86%;
+  height: 76%;
+
+  background: #f5f6fa;
+
+  border-radius: 12px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.55);
+
+  border: 1px solid rgba(255,255,255,.5);
+
+  z-index: 10;
+}
+
+.hidden {
+  display: none;
+}
+
+.maximized {
+  left: 0 !important;
+  top: 28px !important;
+
+  width: 100% !important;
+  height: calc(100% - 28px) !important;
+
+  border-radius: 0;
+}
+
+/* TITLE BAR */
+
+.titlebar {
+  height: 40px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: #ededf0;
+
+  border-bottom: 1px solid #d1d1d5;
+
+  position: relative;
+}
+
+.dark-titlebar {
+  background: #25252c;
+
+  color: white;
+
+  border-bottom: 0;
+}
+
+.traffic {
+  position: absolute;
+
+  left: 12px;
+
+  display: flex;
+
+  gap: 7px;
+}
+
+.traffic button {
+  width: 12px;
+  height: 12px;
+
+  border-radius: 50%;
+
+  border: 0;
+}
+
+.close {
+  background: #ff5f57;
+}
+
+.minimize {
+  background: #febc2e;
+}
+
+.maximize {
+  background: #28c840;
+}
+
+/* MEMO */
+
+.memo-toolbar {
+  height: 45px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 7px 10px;
+
+  background: #f0f1f4;
+
+  border-bottom: 1px solid #d7d9df;
+}
+
+.memo-toolbar button {
+  border: 1px solid #c7cbd4;
+
+  background: white;
+
+  border-radius: 6px;
+
+  padding: 6px 11px;
+}
+
+.memo-toolbar input {
+  margin-left: auto;
+
+  width: 230px;
+
+  padding: 7px 10px;
+
+  border-radius: 7px;
+
+  border: 1px solid #c7cbd4;
+
+  outline: none;
+}
+
+.memo-layout {
+  display: flex;
+
+  height: calc(100% - 85px);
+}
+
+.memo-sidebar {
+  width: 250px;
+
+  background: #edf0f5;
+
+  border-right: 1px solid #d5d8df;
+
+  overflow-y: auto;
+}
+
+.sidebar-title {
+  padding: 13px;
+
+  color: #737a87;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: .08em;
+}
+
+.memo-item {
+  padding: 11px 14px;
+
+  border-bottom: 1px solid #dfe1e6;
+
+  cursor: pointer;
+}
+
+.memo-item:hover {
+  background: #e3e8f0;
+}
+
+.memo-item.active {
+  background: #d5e3f8;
+
+  border-left: 3px solid #3878d5;
+
+  padding-left: 11px;
+}
+
+.memo-item-title {
+  font-weight: 650;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+.memo-item-preview {
+  color: #747c89;
+
+  font-size: 11px;
+
+  margin-top: 4px;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+.memo-editor {
+  flex: 1;
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+.memo-title-input {
+  border: 0;
+
+  border-bottom: 1px solid #dddfe4;
+
+  outline: none;
+
+  padding: 18px;
+
+  font-size: 24px;
+
+  font-weight: 700;
+}
+
+#memoBody {
+  flex: 1;
+
+  resize: none;
+
+  border: 0;
+
+  outline: none;
+
+  padding: 18px;
+
+  font:
+    15px/1.6
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    monospace;
+}
+
+.memo-status,
+.browser-status {
+  height: 25px;
+
+  padding: 5px 10px;
+
+  background: #f0f1f4;
+
+  color: #858b96;
+
+  font-size: 11px;
+}
+
+/* OPERA */
+
+.browser-window {
+  background: #15151a;
+}
+
+.browser-tabs {
+  height: 36px;
+
+  display: flex;
+
+  align-items: end;
+
+  padding-left: 10px;
+
+  background: #25252c;
+}
+
+.browser-tab {
+  height: 32px;
+
+  padding: 8px 20px;
+
+  background: #36363e;
+
+  border-radius: 8px 8px 0 0;
+
+  color: white;
+
+  font-size: 13px;
+}
+
+.browser-tabs > button {
+  margin-left: 5px;
+
+  margin-bottom: 4px;
+
+  border: 0;
+
+  background: transparent;
+
+  color: white;
+
+  font-size: 20px;
+}
+
+.browser-toolbar {
+  height: 47px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 7px;
+
+  background: #202026;
+}
+
+.browser-toolbar button {
+  min-width: 30px;
+
+  height: 31px;
+
+  border: 0;
+
+  border-radius: 6px;
+
+  background: #38383f;
+
+  color: white;
+
+  font-size: 15px;
+}
+
+#addressBar {
+  flex: 1;
+
+  height: 31px;
+
+  padding: 0 14px;
+
+  border: 0;
+
+  outline: none;
+
+  border-radius: 16px;
+
+  background: #38383f;
+
+  color: white;
+}
+
+#browserFrame {
+  display: block;
+
+  width: 100%;
+
+  height: calc(100% - 133px);
+
+  border: 0;
+
+  background: white;
+}
+
+/* DOCK */
+
+.dock {
+  position: absolute;
+
+  left: 50%;
+  bottom: 12px;
+
+  transform: translateX(-50%);
+
+  height: 60px;
+
+  padding: 7px 10px;
+
+  display: flex;
+
+  gap: 8px;
+
+  align-items: center;
+
+  background: rgba(255,255,255,.25);
+
+  border: 1px solid rgba(255,255,255,.4);
+
+  backdrop-filter: blur(20px);
+
+  border-radius: 18px;
+
+  z-index: 2000;
+}
+
+.dock button {
+  width: 45px;
+  height: 45px;
+
+  border: 0;
+
+  border-radius: 11px;
+
+  background: rgba(255,255,255,.18);
+
+  font-size: 27px;
+
+  transition: .15s;
+}
+
+.dock button:hover {
+  transform: translateY(-5px) scale(1.08);
+
+  background: rgba(255,255,255,.4);
+}
+
+.dock-separator {
+  width: 1px;
+
+  height: 38px;
+
+  background: rgba(255,255,255,.4);
+}
