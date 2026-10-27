@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PPOS — Interstellar Browser</title>
+  <title>PPOS</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -28,8 +28,8 @@
       </button>
 
       <button class="desktop-icon" onclick="openWindow('browserWindow')">
-        <span>🚀</span>
-        Interstellar
+        <span>🌐</span>
+        Opera GX
       </button>
     </div>
 
@@ -106,14 +106,14 @@
           <button class="maximize" onclick="maximizeWindow('browserWindow')"></button>
         </div>
 
-        <strong>Interstellar Browser</strong>
+        <strong>Opera GX</strong>
 
       </div>
 
       <div class="browser-tabs">
 
         <div class="browser-tab active">
-          🚀 Interstellar
+          🌐 Proxy
         </div>
 
         <button onclick="newTab()">＋</button>
@@ -128,23 +128,22 @@
 
         <input
           id="addressBar"
-          value="https://iwannapoop676767.up.railway.app"
+          value="https://iwannapoop.up.railway.app"
           onkeydown="addressKey(event)"
         >
 
         <button onclick="navigate()">Go</button>
-        <button onclick="openExternal()" title="Open site in a new tab">↗</button>
 
       </div>
 
       <iframe
         id="browserFrame"
-        src="https://iwannapoop676767.up.railway.app"
+        src="https://iwannapoop.up.railway.app"
         allowfullscreen>
       </iframe>
 
-      <div class="browser-status" id="browserStatus">
-        Interstellar • Ready
+      <div class="browser-status">
+        Opera GX
       </div>
 
     </section>
