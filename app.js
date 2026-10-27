@@ -263,8 +263,6 @@ function navigate() {
   document.getElementById("browserFrame").src =
     url;
 
-  const status = document.getElementById("browserStatus");
-  if (status) status.textContent = "Loading • " + new URL(url).hostname;
 
   browserHistory =
     browserHistory.slice(
@@ -282,12 +280,6 @@ function addressKey(event) {
   if (event.key === "Enter") {
     navigate();
   }
-}
-
-function openExternal() {
-  const url = document.getElementById("addressBar").value.trim();
-  if (!url) return;
-  window.open(url, "_blank", "noopener,noreferrer");
 }
 
 function reloadPage() {
